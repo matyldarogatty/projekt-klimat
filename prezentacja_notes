@@ -1,0 +1,44 @@
+Prezentacja: 
+
+Projekt ma na celu przedstawienie produkcji, konsumpcji oraz importu i eksportu danych o produktach spożywczych. W dodatku porównamy spożycie wybranych mięs w zależności od przodującego wyznania w danym kraju.
+Dane zostały pobrane z link! i zawierają kolumny takie jak: 'Area Code', 'Area', 'Item Code', 'Item', 'Element Code', 'Element', 'Unit', 'Y2010', 'Y2011', 'Y2012', 'Y2013', 'Y2014', 'Y2015', 'Y2016', 'Y2017', 'Y2018', 'Y2019'.
+
+Funkcjonalności: 
+- mapki po wyborze parametru takiego jak rok, rodzaj żywności
+- barploty dla żywności
+- mapka religijności (jeśli będzie widoczna zależność, np. moża tylko hinduizm itp.)
+
+Kod: ???
+
+Proponowane podziały na kategorie:
+
+cereals <- c("Cereals - Excluding Beer")                         
+
+starch <- c("Starchy Roots", "Cassava and products", "Potatoes and products", "Sweet potatoes", "Yams", "Roots, Other")
+
+sugar <- c("Sugar & Sweeteners")
+
+pulses <- c("Pulses")
+
+nuts <- c("Treenuts", "Nuts and products", "Groundnuts")
+
+fats <- c("Oilcrops", "Vegetable Oils", "Animal fats", "Butter, Ghee")
+
+seeds <- c("Sunflower seed", "Rape and Mustardseed", "Cottonseed", "Coconuts - Incl Copra", "Sesame seed", "Palm kernels")
+
+vegetables <- c("Vegetables")
+
+fruits <- c("Fruits - Excluding Wine") 
+
+alko <- c("Alcoholic Beverages") # bez podziału też może być ciekawe
+
+spices <- c('Spices')
+
+meat <- c('Meat') # też z podziałem na rodzaj mięsa
+
+diary&eggs <- c("Cream", "Eggs", "Milk - Excluding Butter")
+
+fish <- c("Fish, Seafood")
+
+inne <- c("Miscellaneous", "Infant food")
+# moze rozne wywalic?
