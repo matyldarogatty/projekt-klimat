@@ -2,16 +2,16 @@
 library(ggplot2)
 library(data.table)
 library(shiny)
-library(shinythemes)library(shinythemes)
+library(shinythemes)
 library(plyr)
 
+
+
+#czyszczenie danych
 
 list.files("data",pattern = "csv",full.names = TRUE)
 
 file_paths =list.files("data",pattern = "csv",full.names = TRUE)
-files = vector("list", length(file_paths))
-
-
 
 food<-fread(file_paths)
 food<-food[Y2012> 0 & !is.na(Y2012) & !is.na(Y2010) & Y2010> 0 & !is.na(Y2011) 
@@ -21,3 +21,8 @@ food<-food[Y2012> 0 & !is.na(Y2012) & !is.na(Y2010) & Y2010> 0 & !is.na(Y2011)
            & !is.na(Y2019) & Y2019> 0] 
 
 
+food = food[, list(Area, Item, Element, Unit,  
+                                `2010` = Y2010,
+                   `2011` = Y2011, `2012` = Y2012,`2013` = Y2013,
+                   `2014` = Y2014, `2015` = Y2015, `2016` = Y2016,
+                   `2017` = Y2017, `2018` = Y2018, `2019` = Y2019)]
