@@ -22,7 +22,6 @@ food = food[Y2012> 0 & !is.na(Y2012) & !is.na(Y2010) & Y2010> 0 & !is.na(Y2011)
 
 
 food = food[, list(Area, Item, Element, Unit,
-                   Country = `Area`,
                     `2010` = Y2010,
                    `2011` = Y2011, `2012` = Y2012,`2013` = Y2013,
                    `2014` = Y2014, `2015` = Y2015, `2016` = Y2016,
@@ -31,3 +30,5 @@ food = food[, list(Area, Item, Element, Unit,
 food = food[Element %in% c("Production", "Import Quantity", "Export Quantity",
                             "Food")]
 
+country = unique(food[["Area"]])[1:178]
+food = food[Area %in% country]
