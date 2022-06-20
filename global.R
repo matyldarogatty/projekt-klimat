@@ -28,7 +28,8 @@ food = food[, list(Area, Item, Element, Unit,
                    `2017` = Y2017, `2018` = Y2018, `2019` = Y2019)]
 
 food = food[Element %in% c("Production", "Import Quantity", "Export Quantity",
-                            "Food")]
+                            "Food", "Tourist consumption")]
 
 country = unique(food[["Area"]])[1:178]
 food = food[Area %in% country]
+
