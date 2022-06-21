@@ -53,5 +53,3 @@ veg_exp = choose_product(export, "Vegetables")
 choose_row = function(col_name, str_value) fad_not_na[col_name == str_value]
 
 barplot(veg_exp[[5]], names=veg_exp[[1]])
-
-# TEST
