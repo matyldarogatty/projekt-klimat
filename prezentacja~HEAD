@@ -6,39 +6,29 @@ Dane zostały pobrane z link! i zawierają kolumny takie jak: 'Area Code', 'Area
 Funkcjonalności: 
 - mapki po wyborze parametru takiego jak rok, rodzaj żywności
 - barploty dla żywności
-- mapka religijności (jeśli będzie widoczna zależność, np. moża tylko hinduizm itp.)
 
 Kod: ???
 
 Proponowane podziały na kategorie:
 
 cereals <- c("Cereals - Excluding Beer")                         
-
-starch <- c("Starchy Roots", "Cassava and products", "Potatoes and products", "Sweet potatoes", "Yams", "Roots, Other")
-
 sugar <- c("Sugar & Sweeteners")
-
 pulses <- c("Pulses")
-
-nuts <- c("Treenuts", "Nuts and products", "Groundnuts")
-
-fats <- c("Oilcrops", "Vegetable Oils", "Animal fats", "Butter, Ghee")
-
-seeds <- c("Sunflower seed", "Rape and Mustardseed", "Cottonseed", "Coconuts - Incl Copra", "Sesame seed", "Palm kernels")
-
+nuts <- c("Nuts and products")
 vegetables <- c("Vegetables")
-
 fruits <- c("Fruits - Excluding Wine") 
-
-alko <- c("Alcoholic Beverages") # bez podziału też może być ciekawe
-
+wine <- c("Wine")
+beer <- c("Beer")
 spices <- c('Spices')
 
-meat <- c('Meat') # też z podziałem na rodzaj mięsa
+meat <- c('Meat')
+beef <- c("Bovine Meat")
+mutton <- c('Mutton & Goat Meat') # baranina, kozina
+poultry <- c("Poultry Meat")
 
-diary&eggs <- c("Cream", "Eggs", "Milk - Excluding Butter")
-
+diary <- c("Milk - Excluding Butter")
+eggs <- c('Eggs')
 fish <- c("Fish, Seafood")
 
-inne <- c("Miscellaneous", "Infant food")
-# moze rozne wywalic?
+TO DO:
+- zmiana nazw produktów/języka prezentacji

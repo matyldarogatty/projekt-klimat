@@ -28,58 +28,6 @@ feeding[, nans := NULL]
 # dodanie do siebie wartości z Food & Tourist
 feeding = as.data.table(ddply(feeding, c("Area", 'Item'), numcolwise(sum)))
 
-cereals = feeding[Item == "Cereals - Excluding Beer"]
-cereals[, Item := NULL]
-
-starchs_vec = c("Starchy Roots", "Cassava and products", 
-                "Potatoes and products", "Sweet potatoes", 
-                "Yams", "Roots, Other")
-
-starch = feeding[Item %in% starchs_vec]
-starch[, Item := NULL]
-
-sugar = feeding[Item == "Sugar & Sweeteners"]
-sugar[, Item := NULL]
-
-pulses = feeding[Item == 'Pulses']
-pulses[, Item := NULL]
-
-nuts_vec = c("Treenuts", "Nuts and products", "Groundnuts")
-
-nuts = feeding[Item %in% nuts_vec]
-nuts[, Item := NULL]
-
-fats_vec = c("Oilcrops", "Vegetable Oils", "Animal fats", "Butter, Ghee")
-
-fats = feeding[Item %in% fats_vec]
-fats[, Item := NULL]
-
-seeds_vec <- c("Sunflower seed", "Rape and Mustardseed", "Cottonseed", 
-               "Coconuts - Incl Copra", "Sesame seed", "Palm kernels")
-
-seeds = feeding[Item %in% seeds_vec]
-seeds[, Item := NULL]
-
-vegetables = feeding[Item == 'Vegetables']
-vegetables[, Item := NULL]
-
-fruits = feeding[Item == "Fruits - Excluding Wine"]
-fruits[, Item := NULL]
-
-tea = feeding[Item == "Tea (including mate)"]
-tea[, Item := NULL]
-
-caff = feeding[Item == "Cocoa Beans and products"]
-caff[, Item := NULL]
-
-stimulants_vec <- c("Stimulants", "Alcoholic Beverages")
-
-stimulants = feeding[Item %in% stimulants_vec]
-stimulants[, Item := NULL]
-
-continents = c('Africa', 'Asia', 'Australia', 'Europe', 'Northern America',
-               'South America')
-
 meat_continents = feeding[Item == 'Meat' & Area %in% continents]
 meat_continents = meat_continents[, list(Area, Y2010)]
 
