@@ -1,44 +1,101 @@
 ui = fluidPage(
   setBackgroundColor(
-    color = c("#58d68d")
+    color = c('#b3ffb3')
   ),
   
   titlePanel("World food analysis"),
-  sidebarLayout(
-    sidebarPanel(
-      
-      selectInput(inputId = "produkt", 
-                  label = "Choose product",
-                  choices = products,
-                  selected = 1),
-      
-      selectInput(inputId = "region", 
-                  label = "Choose region",
-                  choices = country,
-                  selected = 1),
-      
-      sliderInput(inputId = 'year',
-                  label = 'Choose year',
-                  min = 2010,
-                  max = 2019,
-                  value = c(2010),
-                  sep = '')
-      
-    ),
     mainPanel(
       tabsetPanel(
         
         tabPanel("Production",
-                 p("Wykresy dot. produkcji - najlepiej barploty,")),
+                 p("Wykresy dot. produkcji - najlepiej barploty, mapka"),
+                 sidebarPanel(
+                   
+                   selectInput(inputId = "productP", 
+                               label = "Choose product",
+                               choices = products,
+                               selected = 1),
+                   
+                   selectInput(inputId = "regionP", 
+                               label = "Choose region",
+                               choices = country,
+                               selected = 1),
+                   
+                   sliderInput(inputId = 'yearP',
+                               label = 'Choose year',
+                               min = 2010,
+                               max = 2019,
+                               value = c(2010),
+                               sep = ''),
+                   plotOutput(outputId = "production_plot")
+                   
+                 )),
         
         tabPanel("Consumption",
-                 p("Wykresy dot konsumpcji")),
+                 p("Wykresy dot konsumpcji"),
+                 sidebarPanel(
+                   selectInput(inputId = "productC", 
+                               label = "Choose product",
+                               choices = products,
+                               selected = 1),
+                   
+                   selectInput(inputId = "regionC", 
+                               label = "Choose region",
+                               choices = country,
+                               selected = 1),
+                   
+                   sliderInput(inputId = 'yearC',
+                               label = 'Choose year',
+                               min = 2010,
+                               max = 2019,
+                               value = c(2010),
+                               sep = ''),
+                   plotOutput(outputId = "consumption_plot")
+                   )),
         
         tabPanel("Import",
-                 p("Wykresy dot importuu")),
-        tabPanel('Export',
-                 p("Wykresy dot expotu"))
+                 p('Wykresy dot importu'),
+                 sidebarPanel(
+                   selectInput(inputId = "productI", 
+                               label = "Choose product",
+                               choices = products,
+                               selected = 1),
+                   
+                   selectInput(inputId = "regionI", 
+                               label = "Choose region",
+                               choices = country,
+                               selected = 1),
+                   
+                   sliderInput(inputId = 'yearI',
+                               label = 'Choose year',
+                               min = 2010,
+                               max = 2019,
+                               value = c(2010),
+                               sep = ''),
+                   plotOutput(outputId = "import_plot")
+                 )),
         
-      ))
-  ))
+        tabPanel("Export",
+                 p('Wykresy dot exportu'),
+                 sidebarPanel(
+                   selectInput(inputId = "productE", 
+                               label = "Choose product",
+                               choices = products,
+                               selected = 1),
+                   
+                   selectInput(inputId = "regionE", 
+                               label = "Choose region",
+                               choices = country,
+                               selected = 1),
+                   
+                   sliderInput(inputId = 'yearE',
+                               label = 'Choose year',
+                               min = 2010,
+                               max = 2019,
+                               value = c(2010),
+                               sep = ''),
+                   plotOutput(outputId = "export_plot")
+                 ))
+)))
+        
 
