@@ -1,18 +1,17 @@
+Proponuję apkę po angielsku, bo Area i Itemy są po angielsku i po co to wszystko tłumaczyć na pl
+
 TO DO:
 
-- mapki:
-dodanie longitude i lattitude (jest biblioteka do tego) lub znalezienie innego sposobu na wgranie na mapę
+- coś poza barplotami
 
 - ładniejsze wykresy - może skrócenie nazw krajów? zmiana tytułu i osi, zmiana
 nazw produktów, może coś dodać?
-
-- ogarnięcie żeby to ładnie wyglądało, bo mamy 3 zmienne a wykresy robimy max 2
 
 - jakiś wykres area vs item? dwie zmienne kategoryczne
 
 - ograniczenie krajów, bo jest za dużo i są brzydkie wykresy, najlepiej znaleźć te, które mają najmniej danych i są najmniejsze, żeby mapki były ładne
 
-- dodanie wykresów i mapek do apki <- coś nie działa
+- dodanie wykresów do apki <- coś nie działa
 
 - prezentacja
 
