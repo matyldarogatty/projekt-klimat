@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
 
-=======
 server = function(input, output) {
   output[["production_plot"]] = renderPlot({
     item_year_plot(production, input[['yearP']], input[["productP"]])
@@ -20,4 +18,3 @@ server = function(input, output) {
     item_year_plot(export, input[['yearE']], input[["productE"]])
   })
 }
->>>>>>> Stashed changes
