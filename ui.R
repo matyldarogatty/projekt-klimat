@@ -30,16 +30,14 @@ ui = fluidPage(theme = shinytheme("united"),
                    plotOutput(outputId = "production_plot"))),
                  
                  tabPanel("Data",
-                          selectInput(inputId = "product", 
-                                      label = "Choose product",
-                                      choices = products,
-                                      selected = 1),
                           
                           selectInput(inputId = "region", 
                                       label = "Choose region",
                                       choices = country,
                                       selected = 1),
-                          dataTableOutput("summary")))),
+                          dataTableOutput("summary"),
+                          submitButton("Update View")
+                 ))),
 
         
         tabPanel("Consumption",
@@ -96,7 +94,7 @@ ui = fluidPage(theme = shinytheme("united"),
                    
                    selectInput(inputId = "regionE", 
                                label = "Choose region",
-                               choices = country,
+                               choices = c(country),
                                selected = 1),
                    
                    sliderInput(inputId = 'yearE',
