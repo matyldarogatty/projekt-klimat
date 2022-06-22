@@ -123,7 +123,10 @@ ui = fluidPage(theme = shinytheme("united"),
 
                         p("All of the data in the application comes 
                           from www.fao.org, a website of Food and Agriculture 
-                          Organization of the United Nations."))))
+                          Organization of the United Nations.
+                          This data relates to the production, consumption, import and export of various food products. 
+                          Data attributes include area, product type, and quantity. Raw data was disordered, attributes repeated. 
+                          We decided to minimize attributes of Area to countries, deleting the lines for continents."))))
 ))
         
 
