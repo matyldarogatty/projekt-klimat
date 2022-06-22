@@ -30,8 +30,9 @@ ui = fluidPage(theme = shinytheme("united"),
                               width = 1100, height = 900))),
                  
                  tabPanel("Data",
-                          
-                          selectInput(inputId = "region", 
+                          fluidRow(
+                            column(width = 6,
+                                 selectInput(inputId = "region", 
                                       label = "Choose region",
                                       choices = c("-",country),
                                       selected = 1),
@@ -41,11 +42,11 @@ ui = fluidPage(theme = shinytheme("united"),
                                       choices = c("-",products),
                                       selected = 1),
                           
-                          submitButton("Update View"),
+                          submitButton("Update View")),
                           
-                          dataTableOutput("summary")
+                          dataTableOutput("summary", width = "80%")
                           
-                 ))),
+                 )))),
 
         
         tabPanel("Consumption",
