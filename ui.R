@@ -1,7 +1,4 @@
-ui = fluidPage(
-  setBackgroundColor(
-    color = c('#b3ffb3')
-  ),
+ui = fluidPage(theme = shinytheme("united"),
   
   titlePanel("World food analysis"),
     mainPanel(
@@ -95,7 +92,17 @@ ui = fluidPage(
                                value = c(2010),
                                sep = ''),
                    plotOutput(outputId = "export_plot")
-                 ))
-)))
+                 )),
+        
+        tabPanel("Information",
+                 column(width = 6,
+                        h3("Authors"),
+                        p("Matylda Rogatty"),
+                        p("Aleksandra Ziętek"),
+                        p("Klaudia Tuńska")),
+                 column(width = 6,
+                        h3("Data"),
+                        p("All of the data in the application comes from ."))))
+))
         
 
