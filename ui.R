@@ -5,7 +5,7 @@ ui = fluidPage(theme = shinytheme("united"),
       tabsetPanel(
         tabPanel("Production",
                  tabsetPanel(
-                   tabPanel(
+                   tabPanel("Plot",
                  p("Wykresy dot. produkcji - najlepiej barploty, mapka"),
                  sidebarPanel(
                    
