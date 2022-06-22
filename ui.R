@@ -50,6 +50,8 @@ ui = fluidPage(theme = shinytheme("united"),
 
         
         tabPanel("Consumption",
+               tabsetPanel(
+                tabPanel("Plot",
                  sidebarPanel(
                    selectInput(inputId = "productC", 
                                label = "Choose product",
@@ -69,8 +71,28 @@ ui = fluidPage(theme = shinytheme("united"),
                                sep = '')),
                    mainPanel(
                      plotOutput(outputId = "consumption_plot"))),
+                 
+                 tabPanel("Data",
+                          fluidRow(
+                            column(width = 6,
+                                   selectInput(inputId = "region2", 
+                                               label = "Choose region",
+                                               choices = c("-",country),
+                                               selected = 1),
+                                   
+                                   selectInput(inputId = "product2", 
+                                               label = "Choose product",
+                                               choices = c("-",products),
+                                               selected = 1),
+                                   
+                                   submitButton("Update View")),
+                            
+                            dataTableOutput("summary2")
+                 )))),
         
         tabPanel("Import",
+                tabsetPanel(
+                  tabPanel("Plot",
                  sidebarPanel(
                    selectInput(inputId = "productI", 
                                label = "Choose product",
@@ -90,8 +112,28 @@ ui = fluidPage(theme = shinytheme("united"),
                                sep = '')),
                    mainPanel(
                      plotOutput(outputId = "import_plot"))),
+                 tabPanel("Data",
+                          fluidRow(
+                            column(width = 6,
+                                   selectInput(inputId = "region3", 
+                                               label = "Choose region",
+                                               choices = c("-",country),
+                                               selected = 1),
+                                   
+                                   selectInput(inputId = "product3", 
+                                               label = "Choose product",
+                                               choices = c("-",products),
+                                               selected = 1),
+                                   
+                                   submitButton("Update View")),
+                            
+                            dataTableOutput("summary3")
+                          ))
+                 )),
         
         tabPanel("Export",
+                 tabsetPanel(
+                   tabPanel("Plot",
                  sidebarPanel(
                    selectInput(inputId = "productE", 
                                label = "Choose product",
@@ -111,6 +153,24 @@ ui = fluidPage(theme = shinytheme("united"),
                                sep = '')),
                    mainPanel(
                      plotOutput(outputId = "export_plot"))),
+                 tabPanel("Data", 
+                          fluidRow(
+                            column(width = 6,
+                                   selectInput(inputId = "region4", 
+                                               label = "Choose region",
+                                               choices = c("-",country),
+                                               selected = 1),
+                                   
+                                   selectInput(inputId = "product4", 
+                                               label = "Choose product",
+                                               choices = c("-",products),
+                                               selected = 1),
+                                   
+                                   submitButton("Update View")),
+                            
+                            dataTableOutput("summary4")
+                          )))
+                 ),
         
         tabPanel("Information",
                  column(width = 6,
