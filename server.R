@@ -1,6 +1,6 @@
 server = function(input, output) {
   output[["production_plot"]] = renderPlot({
-    item_year_plot(production, input[['yearP']], input[["productP"]])
+    item_year_plot(production, input$regionP, input$productP)
   })
   
   output[["summary"]] = renderDT({
@@ -8,13 +8,13 @@ server = function(input, output) {
   })
   
   output[["consumption_plot"]] = renderPlot({
-    item_year_plot(consumption, input[['yearC']], input[["productC"]])
+    item_year_plot(consumption, input$regionC, input$productC)
   })
   output[["import_plot"]] = renderPlot({
-    item_year_plot(import, input[['yearI']], input[["productI"]])
+    item_year_plot(import, input$regionI, input$productI)
   })
   
   output[["export_plot"]] = renderPlot({
-    item_year_plot(export, input[['yearE']], input[["productE"]])
+    item_year_plot(export, input$regionE, input$productE)
   })
 }
