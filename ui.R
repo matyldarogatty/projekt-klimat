@@ -44,7 +44,7 @@ ui = fluidPage(theme = shinytheme("united"),
                           
                           submitButton("Update View")),
                           
-                          dataTableOutput("summary", width = "80%")
+                          dataTableOutput("summary")
                           
                  )))),
 
