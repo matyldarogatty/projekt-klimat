@@ -1,17 +1,17 @@
 server = function(input, output) {
   output[["production_plot"]] = renderPlot({
-    item_year_plot(production, 'yearP', "productP")
+    item_year_plot(production, input[['yearP']], input[["productP"]])
   })
   
   output[["consumption_plot"]] = renderPlot({
-    item_year_plot(consumption, 'yearC', "productC")
+    item_year_plot(consumption, input[['yearC']], input[["productC"]])
   })
   
   output[["import_plot"]] = renderPlot({
-    item_year_plot(import, 'yearI', "productI")
+    item_year_plot(import, input[['yearI']], input[["productI"]])
   })
   
   output[["export_plot"]] = renderPlot({
-    item_year_plot(export, 'yearE', "productE")
+    item_year_plot(export, input[['yearE']], input[["productE"]])
   })
 }
