@@ -33,7 +33,7 @@ ui = fluidPage(theme = shinytheme("united"),
                           
                           selectInput(inputId = "region", 
                                       label = "Choose region",
-                                      choices = country,
+                                      choices = c("-",country),
                                       selected = 1),
                           dataTableOutput("summary"),
                           submitButton("Update View")

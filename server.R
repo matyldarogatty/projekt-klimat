@@ -4,7 +4,12 @@ server = function(input, output) {
   })
   
   output[["summary"]] = renderDT({
-    food[Element=="Production" & Area%in%c(input$region) ]
+    
+    if (input$region=="-"){
+    food[Element=="Production"]}
+    else{
+      food[Element=="Production" & Area==input$region ]
+    }
   })
   
   output[["consumption_plot"]] = renderPlot({
