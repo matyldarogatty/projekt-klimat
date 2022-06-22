@@ -1,19 +1,3 @@
-
-ui = fluidPage(
-  tabsetPanel(
-    tabPanel("Produkcja"),
-    tabPanel("Spożycie"),
-    tabPanel("Import i eksport")
-  ))
-
-ui = fluidPage(theme = shinytheme("united"),
-    titlePanel("World food analysis"),
-        mainPanel(
-          tabsetPanel(
-        tabPanel("Production",
-              tabsetPanel(
-                tabPanel("Plot",  
-
 ui = fluidPage(theme = shinytheme("united"),
   
   titlePanel("World food analysis"),
@@ -44,14 +28,7 @@ ui = fluidPage(theme = shinytheme("united"),
                                sep = ''),
 
                    plotOutput(outputId = "production_plot"))),
-                 tabPanel("Table",
-                          dataTableOutput("summary"))
-                   
-                 )),
-
-                   plotOutput(outputId = "production_plot")
-                   
-                 )),
+                 
                  tabPanel("Data",
                           selectInput(inputId = "product", 
                                       label = "Choose product",
@@ -143,11 +120,6 @@ ui = fluidPage(theme = shinytheme("united"),
                         p("All of the data in the application comes 
                           from www.fao.org, a website of Food and Agriculture 
                           Organization of the United Nations."))))
-))
-        
-
-=======
-                        p("All of the data in the application comes from ."))))
 ))
         
 
