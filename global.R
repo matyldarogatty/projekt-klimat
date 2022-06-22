@@ -53,6 +53,7 @@ food = food[!(Area %in% c('China, Hong Kong SAR', 'China, mainland',
                           'China, Taiwan Province of', "C\xf4te d'Ivoire"))]
 
 country = unique(food[, Area])
+food[, s := NULL]
 # wywalać chiny inne niż chiny
 
 # podział na Elementy
@@ -82,10 +83,15 @@ choose_product = function(dt, str_product){
 }
 veg_exp = choose_product(export, "Vegetables")
 
+choose_area = function(dt, str_area){
+  return(dt[Area == str_area])
+}
+china_exp = choose_area(export, "China")
+
 ### WYKRESY
 item_year_plot = function(DT, year, item){
-  dt = choose_year(DT, year)
-  g = ggplot(dt[Item == item], aes(x = Area, y = get(year), fill = Area)) + 
+  dt = choose_product(choose_year(DT, year), item)
+  g = ggplot(dt, aes(x = Area, y = get(year), fill = Area)) + 
     geom_bar(stat = 'identity') +
     labs(title = 'Amount of ___ in countries', 
          y = "Amount (1000 tonnes)", x = "Country") +
@@ -96,8 +102,9 @@ item_year_plot = function(DT, year, item){
 }
 item_year_plot(import, '2018', 'Pulses')
 
-area_year_plot = function(dt, year, area){
-  g = ggplot(dt[Area == area], aes(x = Item, y = get(year), fill = Item)) + 
+area_year_plot = function(DT, year, area){
+  dt = choose_area(choose_year(DT, year), area)
+  g = ggplot(dt, aes(x = Item, y = get(year), fill = Item)) + 
     geom_bar(stat = 'identity') +
     labs(title = 'Amount of products in ___ in ____', 
          y = "Amount (1000 tonnes)", x = "Product") +
@@ -107,6 +114,19 @@ area_year_plot = function(dt, year, area){
   return(g)
 }
 area_year_plot(import, '2018', 'China')
+
+area_line = function(DT, area){
+  dt = choose_area(DT, area)
+  g = ggplot(melt(dt), aes(x = variable, y = value, group = Item, color = Item)) + 
+    geom_line() +
+    geom_point()
+    labs(title = 'Amount of ____ in ___ over the years', 
+         y = "Amount (1000 tonnes)", x = "Year") +
+    theme_minimal() +
+    theme(legend.position = "None")
+  return(g)
+}
+area_line(import, 'China')
 
 
 
