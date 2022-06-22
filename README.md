@@ -1,11 +1,13 @@
-# Analiza danych związanych z żywnością
+# Food related data analysis
 
-### Analiza dotyczy:
+### The analysis concerns:
 
-* produkcji
-* spożycia
-* importu i eksportu
+* production
+* consumpcion
+* import and export
 
-żwyności z podziałem na miejsce lub czas.
+of food by area or time.
 
-### Cały program napisany jest w języku R, dane zwizualizowane są w R Shiny.
+### The entire program is written in R, the data is visualized in R Shiny.
+
+
