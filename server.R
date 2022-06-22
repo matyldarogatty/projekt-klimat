@@ -4,7 +4,7 @@ server = function(input, output) {
   })
   
   output[["summary"]] = renderDT({
-    food[Element=="Production"]
+    food[Element=="Production" & Area==input$region & Item==input$product]
   })
   
   output[["consumption_plot"]] = renderPlot({
