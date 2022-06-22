@@ -1,11 +1,11 @@
-<<<<<<< Updated upstream
+
 ui = fluidPage(
   tabsetPanel(
     tabPanel("Produkcja"),
     tabPanel("Spożycie"),
     tabPanel("Import i eksport")
   ))
-=======
+
 ui = fluidPage(theme = shinytheme("united"),
     titlePanel("World food analysis"),
         mainPanel(
@@ -13,6 +13,16 @@ ui = fluidPage(theme = shinytheme("united"),
         tabPanel("Production",
               tabsetPanel(
                 tabPanel("Plot",  
+
+ui = fluidPage(theme = shinytheme("united"),
+  
+  titlePanel("World food analysis"),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Production",
+                 tabsetPanel(
+                   tabPanel("Plot",
+
                  p("Wykresy dot. produkcji - najlepiej barploty, mapka"),
                  sidebarPanel(
                    
@@ -32,11 +42,28 @@ ui = fluidPage(theme = shinytheme("united"),
                                max = 2019,
                                value = c(2010),
                                sep = ''),
+
                    plotOutput(outputId = "production_plot"))),
                  tabPanel("Table",
                           dataTableOutput("summary"))
                    
                  )),
+
+                   plotOutput(outputId = "production_plot")
+                   
+                 )),
+                 tabPanel("Data",
+                          selectInput(inputId = "product", 
+                                      label = "Choose product",
+                                      choices = products,
+                                      selected = 1),
+                          
+                          selectInput(inputId = "region", 
+                                      label = "Choose region",
+                                      choices = country,
+                                      selected = 1),
+                          dataTableOutput("summary")))),
+
         
         tabPanel("Consumption",
                  p("Wykresy dot konsumpcji"),
@@ -112,10 +139,16 @@ ui = fluidPage(theme = shinytheme("united"),
                         p("Klaudia Tuńska")),
                  column(width = 6,
                         h3("Data"),
+
                         p("All of the data in the application comes 
                           from www.fao.org, a website of Food and Agriculture 
                           Organization of the United Nations."))))
 ))
         
->>>>>>> Stashed changes
+
+=======
+                        p("All of the data in the application comes from ."))))
+))
+        
+
 
