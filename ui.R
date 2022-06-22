@@ -3,8 +3,9 @@ ui = fluidPage(theme = shinytheme("united"),
   titlePanel("World food analysis"),
     mainPanel(
       tabsetPanel(
-        
         tabPanel("Production",
+                 tabsetPanel(
+                   tabPanel(
                  p("Wykresy dot. produkcji - najlepiej barploty, mapka"),
                  sidebarPanel(
                    
@@ -27,6 +28,8 @@ ui = fluidPage(theme = shinytheme("united"),
                    plotOutput(outputId = "production_plot")
                    
                  )),
+                 tabPanel("Dane",
+                                   dataTableOutput("summary")))),
         
         tabPanel("Consumption",
                  p("Wykresy dot konsumpcji"),
