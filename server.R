@@ -1,8 +1,18 @@
 server = function(input, output) {
-  output[["production_plot"]] = renderPlot({
-    item_year_plot(production, toString(input$yearP), input$productP)
+  
+  # produkcja
+  output[["production_plot1"]] = renderPlot({
+    item_year_plot(production, toString(input$yearP1), input$productP1)
   })
   
+  output[["production_plot2"]] = renderPlot({
+    area_year_plot(production, toString(input$yearP2), input$areaP2)
+  })
+  
+  output[["production_plot3"]] = renderPlot({
+    area_line(production, input$areaP3)
+  })
+
   output[["summary"]] = renderDT({
     
     if (input$region == "-" & input$product=="-"){
@@ -18,8 +28,17 @@ server = function(input, output) {
     }
   })
   
-  output[["consumption_plot"]] = renderPlot({
-    item_year_plot(consumption, toString(input$yearC), input$productC)
+  # konsumpcja
+  output[["consumption_plot1"]] = renderPlot({
+    item_year_plot(consumption, toString(input$yearC1), input$productC1)
+  })
+  
+  output[["consumption_plot2"]] = renderPlot({
+    area_year_plot(consumption, toString(input$yearC2), input$areaC2)
+  })
+  
+  output[["consumption_plot3"]] = renderPlot({
+    area_line(consumption, input$areaC3)
   })
   
   output[["summary2"]] = renderDT({
@@ -37,11 +56,18 @@ server = function(input, output) {
     }
   })
   
-  
-  output[["import_plot"]] = renderPlot({
-    item_year_plot(import, toString(input$yearI), input$productI)
+  # import
+  output[["import_plot1"]] = renderPlot({
+    item_year_plot(production, toString(input$yearI1), input$productI1)
   })
   
+  output[["import_plot2"]] = renderPlot({
+    area_year_plot(production, toString(input$yearI2), input$areaI2)
+  })
+  
+  output[["import_plot3"]] = renderPlot({
+    area_line(production, input$areaI3)
+  })
   output[["summary3"]] = renderDT({
     
     if (input$region3 == "-" & input$product3=="-"){
@@ -57,9 +83,17 @@ server = function(input, output) {
     }
   })
   
+  # export
+  output[["export_plot1"]] = renderPlot({
+    item_year_plot(production, toString(input$yearE1), input$productE1)
+  })
   
-  output[["export_plot"]] = renderPlot({
-    item_year_plot(export, toString(input$yearE), input$productE)
+  output[["export_plot2"]] = renderPlot({
+    area_year_plot(production, toString(input$yearE2), input$areaE2)
+  })
+  
+  output[["export_plot3"]] = renderPlot({
+    area_line(production, input$areaE3)
   })
   
   output[["summary4"]] = renderDT({

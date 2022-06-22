@@ -60,7 +60,7 @@ long = melt(food, id.vars = 'Area', measure.vars = 's')
 small = unique(long[, su := sum(value), 
                     by = c('Area')][, list(Area, su)])[order(su)][, Area][1:60]
 food = food[!(Area %in% small)]
-food = food[!(Area %in% c('China, Hong Kong SAR', 'China, mainland', 
+food = food[!(Area %in% c('China, Hong Kong SAR', 'China, mainland', 'World',
                           'China, Taiwan Province of', "C\xf4te d'Ivoire"))]
 
 country = unique(food[, Area])
@@ -134,5 +134,7 @@ area_line = function(DT, area){
           plot.title = element_text(hjust = 0.5))
   return(g)
 }
+
+
 
 
