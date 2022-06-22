@@ -2,19 +2,18 @@ Proponuję apkę po angielsku, bo Area i Itemy są po angielsku i po co to wszys
 
 TO DO:
 
-- coś poza barplotami
+- dane:
+usuniecie jakichs krajow, może zmiana itemów
 
-- ładniejsze wykresy - może skrócenie nazw krajów? zmiana tytułu i osi, zmiana
-nazw produktów, może coś dodać?
-
-- jakiś wykres area vs item? dwie zmienne kategoryczne
-
-- ograniczenie krajów, bo jest za dużo i są brzydkie wykresy, najlepiej znaleźć te, które mają najmniej danych i są najmniejsze, żeby mapki były ładne
-
-- dodanie wykresów do apki <- coś nie działa
+- wykresy:
+reorder, skrocenie nazw krajow i zmienna w tytule
+cos poza barplotami - może liniowe wzgledem czasu
+moze pogrupowanie na kategorie kolorystycznie: warzywa, owoce, mieso
 
 - prezentacja
 
-EWENTUALNIE:
-- ogarnięcie gita tzn. README, foldery
+- apka:
+wygląd ogólny
+może lepiej zamiast zakładek import/export itp dać item/element i do wyboru czy produkcja, import itp?
+
 
