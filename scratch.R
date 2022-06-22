@@ -79,7 +79,7 @@ china_exp = choose_area(export, "China")
 ### WYKRESY
 item_year_plot = function(DT, year, item){
   dt = choose_product(choose_year(DT, year), item)
-  g = ggplot(dt, aes(x = Area, y = get(year), fill = Area)) + 
+  g = ggplot(dt, aes(x = reorder(Area, get(year)), y = get(year), fill = Area)) + 
     geom_bar(stat = 'identity') +
     labs(title = paste(c('Amount of'), item, c('in countries in'), year), 
          y = "Amount (1000 tonnes)", x = "Country") +
@@ -88,11 +88,10 @@ item_year_plot = function(DT, year, item){
     theme(legend.position = "None", plot.title = element_text(hjust = 0.5)) 
   return(g)
 }
-item_year_plot(import, '2018', 'Pulses')
 
 area_year_plot = function(DT, year, area){
   dt = choose_area(choose_year(DT, year), area)
-  g = ggplot(dt, aes(x = Item, y = get(year), fill = Item)) + 
+  g = ggplot(dt, aes(x = reorder(Item, get(year)), y = get(year), fill = Item)) + 
     geom_bar(stat = 'identity') +
     labs(title = paste(c('Amount of products in'), area, c('in'), year), 
          y = "Amount (1000 tonnes)", x = "Product") +
@@ -101,7 +100,6 @@ area_year_plot = function(DT, year, area){
     coord_flip()
   return(g)
 }
-area_year_plot(import, '2018', 'China')
 
 area_line = function(DT, area){
   dt = choose_area(DT, area)
@@ -115,4 +113,4 @@ area_line = function(DT, area){
           plot.title = element_text(hjust = 0.5))
   return(g)
 }
-area_line(import, 'China')
+
