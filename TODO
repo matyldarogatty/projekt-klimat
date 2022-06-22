@@ -2,8 +2,13 @@ Proponuję apkę po angielsku, bo Area i Itemy są po angielsku i po co to wszys
 
 TO DO:
 
+- dane:
+usuniecie jakichs krajow
+
 - wykresy:
-reorder, cos poza barplotami, skrocenie nazw krajow i zmienna w tytule
+reorder, skrocenie nazw krajow i zmienna w tytule
+cos poza barplotami - może liniowe wzgledem czasu
+moze pogrupowanie na kategorie kolorystycznie: warzywa, owoce, mieso
 
 - prezentacja
 
@@ -11,5 +16,5 @@ reorder, cos poza barplotami, skrocenie nazw krajow i zmienna w tytule
 wygląd ogólny
 
 EWENTUALNIE:
-- ogarnięcie gita tzn. README, foldery
+- cos z tymi religiami ale idk
 
