@@ -28,8 +28,17 @@ ui = fluidPage(theme = shinytheme("united"),
                    plotOutput(outputId = "production_plot")
                    
                  )),
-                 tabPanel("Dane",
-                                   dataTableOutput("summary")))),
+                 tabPanel("Data",
+                          selectInput(inputId = "product", 
+                                      label = "Choose product",
+                                      choices = products,
+                                      selected = 1),
+                          
+                          selectInput(inputId = "region", 
+                                      label = "Choose region",
+                                      choices = country,
+                                      selected = 1),
+                          dataTableOutput("summary")))),
         
         tabPanel("Consumption",
                  p("Wykresy dot konsumpcji"),
