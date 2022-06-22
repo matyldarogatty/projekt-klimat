@@ -5,6 +5,7 @@ library(shiny)
 library(shinythemes)
 library(plyr)
 library(shinyWidgets)
+library(DT)
 
 #czyszczenie danych
 
@@ -52,10 +53,8 @@ food = food[!(Area %in% c('China, Hong Kong SAR', 'China, mainland',
 
 country = unique(food[, Area])
 food[, s := NULL]
-# wywalać chiny inne niż chiny
 
 # podział na Elementy
-
 import =  food[Element =="Import Quantity"]
 import[, Element := NULL]
 
