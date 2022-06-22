@@ -172,7 +172,7 @@ ui = fluidPage(theme = shinytheme("united"),
                           )))
                  ),
         
-        tabPanel("Information",
+        tabPanel("Informations",
                  column(width = 6,
                         h3("Authors"),
                         p("Matylda Rogatty"),
