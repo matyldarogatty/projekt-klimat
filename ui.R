@@ -7,7 +7,6 @@ ui = fluidPage(theme = shinytheme("united"),
                  tabsetPanel(
                    tabPanel("Plot",
 
-                 p("Wykresy dot. produkcji - najlepiej barploty, mapka"),
                  sidebarPanel(
                    
                    selectInput(inputId = "productP", 
@@ -25,9 +24,10 @@ ui = fluidPage(theme = shinytheme("united"),
                                min = 2010,
                                max = 2019,
                                value = c(2010),
-                               sep = ''),
-
-                   plotOutput(outputId = "production_plot"))),
+                               sep = '')),
+                 mainPanel(
+                   plotOutput(outputId = "production_plot", 
+                              width = 1100, height = 900))),
                  
                  tabPanel("Data",
                           
@@ -49,7 +49,6 @@ ui = fluidPage(theme = shinytheme("united"),
 
         
         tabPanel("Consumption",
-                 p("Wykresy dot konsumpcji"),
                  sidebarPanel(
                    selectInput(inputId = "productC", 
                                label = "Choose product",
@@ -66,12 +65,11 @@ ui = fluidPage(theme = shinytheme("united"),
                                min = 2010,
                                max = 2019,
                                value = c(2010),
-                               sep = ''),
-                   plotOutput(outputId = "consumption_plot")
-                   )),
+                               sep = '')),
+                   mainPanel(
+                     plotOutput(outputId = "consumption_plot"))),
         
         tabPanel("Import",
-                 p('Wykresy dot importu'),
                  sidebarPanel(
                    selectInput(inputId = "productI", 
                                label = "Choose product",
@@ -88,12 +86,11 @@ ui = fluidPage(theme = shinytheme("united"),
                                min = 2010,
                                max = 2019,
                                value = c(2010),
-                               sep = ''),
-                   plotOutput(outputId = "import_plot")
-                 )),
+                               sep = '')),
+                   mainPanel(
+                     plotOutput(outputId = "import_plot"))),
         
         tabPanel("Export",
-                 p('Wykresy dot exportu'),
                  sidebarPanel(
                    selectInput(inputId = "productE", 
                                label = "Choose product",
@@ -110,9 +107,9 @@ ui = fluidPage(theme = shinytheme("united"),
                                min = 2010,
                                max = 2019,
                                value = c(2010),
-                               sep = ''),
-                   plotOutput(outputId = "export_plot")
-                 )),
+                               sep = '')),
+                   mainPanel(
+                     plotOutput(outputId = "export_plot"))),
         
         tabPanel("Information",
                  column(width = 6,
