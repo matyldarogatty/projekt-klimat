@@ -29,6 +29,18 @@ food = food[, list(Area, Item, Element, `2010` = Y2010,
 
 food = food[Element %in% c("Production", "Import Quantity", "Export Quantity",
                            "Food", "Tourist consumption")]
+# skrócenie nazw krajów
+food[food == "Venezuela (Bolivarian Republic of)"] <- "Venezuela"
+food[food == "United States of America"] <- "USA"
+food[food == "United Kingdom of Great Britain and Northern Ireland"] <- "UK"
+food[food == "United Republic of Tanzania"] <- "Tanzania"
+food[food == "United Arab Emirates"] <- "UAE"
+food[food == "Syrian Arab Republic" ] <- "Syria"
+food[food == "Lao People's Democratic Republic"] <- "Laos"
+food[food == "Iran (Islamic Republic of)"] <- "Irane"
+food[food == "Democratic Republic of the Congo"] <- "Congo"
+food[food == "Democratic People's Republic of Korea"] <- "Korea"
+food[food == "Bolivia (Plurinational State of)"] <- "Bolivia"
 # unit - all 1000 tonnes
 
 # wybrane produkty
