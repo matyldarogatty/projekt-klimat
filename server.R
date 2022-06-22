@@ -3,6 +3,10 @@ server = function(input, output) {
     item_year_plot(production, input[['yearP']], input[["productP"]])
   })
   
+  output[["summary"]] = renderDT({
+    food[Element=="Production"]
+  })
+  
   output[["consumption_plot"]] = renderPlot({
     item_year_plot(consumption, input[['yearC']], input[["productC"]])
   })
