@@ -32,15 +32,16 @@ food = food[Element %in% c("Production", "Import Quantity", "Export Quantity",
 
 # wybrane produkty
 products = c("Cereals - Excluding Beer", "Sugar & Sweeteners", "Pulses", 
-             "Nuts and products", "Vegetables", "Fruits - Excluding Wine", 
-             "Wine", "Beer", 'Spices', 'Meat', "Bovine Meat", 
+             "Nuts and products", "Potatoes and products", "Onions", 
+             "Oranges, Mandarines", "Bananas", "Apples and products", 
+             "Grapes and products (excl wine)","Wine", "Beer", 'Spices', 
+             "Bovine Meat", "Tomatoes and products", "Lemons, Limes and products",
              'Mutton & Goat Meat', "Poultry Meat", "Milk - Excluding Butter", 
-             'Eggs', "Fish, Seafood")
+             'Eggs', "Fish, Seafood", "Pigmeat", "Pineapples and products")
 food = food[Item %in% products]
 
 # ograniczenie krajów z małymi wartościami
-country = unique(food[["Area"]])[1:178]
-food = food[Area %in% country]
+food = food[Area %in% unique(food[["Area"]])[1:178]]
 
 food[, s := `2010` + `2011` + `2012` + `2013` + `2014` + `2015` + 
        `2016` + `2017` + `2018` + `2019`]
@@ -51,7 +52,7 @@ food = food[!(Area %in% small)]
 food = food[!(Area %in% c('China, Hong Kong SAR', 'China, mainland', 
                           'China, Taiwan Province of', "C\xf4te d'Ivoire"))]
 
-
+country = unique(food[, Area])
 # wywalać chiny inne niż chiny
 
 # podział na Elementy
@@ -90,7 +91,7 @@ item_year_plot = function(DT, year, item){
          y = "Amount (1000 tonnes)", x = "Country") +
     theme_minimal() +
     coord_flip() +
-    theme(legend.position = "None", axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) 
+    theme(legend.position = "None") 
   return(g)
 }
 item_year_plot(import, '2018', 'Pulses')
@@ -98,23 +99,15 @@ item_year_plot(import, '2018', 'Pulses')
 area_year_plot = function(dt, year, area){
   g = ggplot(dt[Area == area], aes(x = Item, y = get(year), fill = Item)) + 
     geom_bar(stat = 'identity') +
-    labs(title = 'Amount of products in ___', 
+    labs(title = 'Amount of products in ___ in ____', 
          y = "Amount (1000 tonnes)", x = "Product") +
     theme_minimal() +
     theme(legend.position = "None") +
     coord_flip()
   return(g)
 }
-area_year_plot(import, '2018', 'Albania')
+area_year_plot(import, '2018', 'China')
 
-area_item_plot = function(dt, year, area){
-  g = ggplot(dt[Area == area], aes(x = Item, y = get(year), fill = Item)) + 
-    geom_bar(stat = 'identity') +
-    theme(legend.position = "None") +
-    coord_flip()
-  return(g)
-}
-area_year_plot(import, '2018', 'Albania')
 
 
 
