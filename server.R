@@ -5,10 +5,16 @@ server = function(input, output) {
   
   output[["summary"]] = renderDT({
     
-    if (input$region=="-"){
-    food[Element=="Production"]}
+    if (input$region == "-" & input$product=="-"){
+    food[Element == "Production"]}
+    else if(input$product == "-"){
+      food[Element == "Production" & Area==input$region]
+    }
+    else if(input$region == "-"){
+      food[Element == "Production" & Item==input$product]
+    }
     else{
-      food[Element=="Production" & Area==input$region ]
+      food[Element=="Production" & Area==input$region & Item==input$product]
     }
   })
   

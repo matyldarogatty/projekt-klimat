@@ -35,8 +35,16 @@ ui = fluidPage(theme = shinytheme("united"),
                                       label = "Choose region",
                                       choices = c("-",country),
                                       selected = 1),
-                          dataTableOutput("summary"),
-                          submitButton("Update View")
+                          
+                          selectInput(inputId = "product", 
+                                      label = "Choose product",
+                                      choices = c("-",products),
+                                      selected = 1),
+                          
+                          submitButton("Update View"),
+                          
+                          dataTableOutput("summary")
+                          
                  ))),
 
         
