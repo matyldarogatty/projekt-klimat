@@ -5,6 +5,7 @@ library(shiny)
 library(shinythemes)
 library(plyr)
 library(shinyWidgets)
+library(DT)
 
 #czyszczenie danych
 
@@ -32,12 +33,10 @@ food = food[Element %in% c("Production", "Import Quantity", "Export Quantity",
 
 # wybrane produkty
 products = c("Cereals - Excluding Beer", "Sugar & Sweeteners", "Pulses", 
-             "Nuts and products", "Potatoes and products", "Onions", 
-             "Oranges, Mandarines", "Bananas", "Apples and products", 
-             "Grapes and products (excl wine)","Wine", "Beer", 'Spices', 
-             "Bovine Meat", "Tomatoes and products", "Lemons, Limes and products",
+             "Nuts and products", "Vegetables", "Fruits - Excluding Wine", 
+             "Wine", "Beer", 'Spices', "Bovine Meat",
              'Mutton & Goat Meat', "Poultry Meat", "Milk - Excluding Butter", 
-             'Eggs', "Fish, Seafood", "Pigmeat", "Pineapples and products")
+             'Eggs', "Fish, Seafood", "Pigmeat")
 food = food[Item %in% products]
 
 # ograniczenie krajów z małymi wartościami
@@ -54,10 +53,8 @@ food = food[!(Area %in% c('China, Hong Kong SAR', 'China, mainland',
 
 country = unique(food[, Area])
 food[, s := NULL]
-# wywalać chiny inne niż chiny
 
 # podział na Elementy
-
 import =  food[Element =="Import Quantity"]
 import[, Element := NULL]
 
@@ -125,110 +122,5 @@ area_line = function(DT, area){
           plot.title = element_text(hjust = 0.5))
   return(g)
 }
-
-
-
-
-
-# unit - all 1000 tonnes
-
-# wybrane produkty
-products = c("Cereals - Excluding Beer", "Sugar & Sweeteners", "Pulses", 
-             "Nuts and products", "Potatoes and products", "Onions", 
-             "Oranges, Mandarines", "Bananas", "Apples and products", 
-             "Grapes and products (excl wine)","Wine", "Beer", 'Spices', 
-             "Bovine Meat", "Tomatoes and products", "Lemons, Limes and products",
-             'Mutton & Goat Meat', "Poultry Meat", "Milk - Excluding Butter", 
-             'Eggs', "Fish, Seafood", "Pigmeat", "Pineapples and products")
-food = food[Item %in% products]
-
-# ograniczenie krajów z małymi wartościami
-food = food[Area %in% unique(food[["Area"]])[1:178]]
-
-food[, s := `2010` + `2011` + `2012` + `2013` + `2014` + `2015` + 
-       `2016` + `2017` + `2018` + `2019`]
-long = melt(food, id.vars = 'Area', measure.vars = 's')
-small = unique(long[, su := sum(value), 
-                    by = c('Area')][, list(Area, su)])[order(su)][, Area][1:60]
-food = food[!(Area %in% small)]
-food = food[!(Area %in% c('China, Hong Kong SAR', 'China, mainland', 
-                          'China, Taiwan Province of', "C\xf4te d'Ivoire"))]
-
-country = unique(food[, Area])
-food[, s := NULL]
-# wywalać chiny inne niż chiny
-
-# podział na Elementy
-
-import =  food[Element =="Import Quantity"]
-import[, Element := NULL]
-
-export =  food[Element =="Export Quantity"]
-export[, Element := NULL]
-
-production = food[Element =="Production"]
-production[, Element := NULL]
-
-consumption = food[Element == 'Food' | Element == 'Tourist consumption']
-consumption[, Element := NULL]
-
-### FUNKCJE
-choose_year = function(data_table, year_str){
-  return (data_table[, colnames(data_table) %in% 
-                       c("Area", "Item", "Element", year_str), 
-                     with =FALSE])
-}
-imp_2018 = choose_year(import, "2018")
-
-choose_product = function(dt, str_product){
-  return(dt[Item == str_product])
-}
-veg_exp = choose_product(export, "Vegetables")
-
-choose_area = function(dt, str_area){
-  return(dt[Area == str_area])
-}
-china_exp = choose_area(export, "China")
-
-### WYKRESY
-item_year_plot = function(DT, year, item){
-  dt = choose_product(choose_year(DT, year), item)
-  g = ggplot(dt, aes(x = Area, y = get(year), fill = Area)) + 
-    geom_bar(stat = 'identity') +
-    labs(title = 'Amount of ___ in countries', 
-         y = "Amount (1000 tonnes)", x = "Country") +
-    theme_minimal() +
-    coord_flip() +
-    theme(legend.position = "None") 
-  return(g)
-}
-item_year_plot(import, '2018', 'Pulses')
-
-area_year_plot = function(DT, year, area){
-  dt = choose_area(choose_year(DT, year), area)
-  g = ggplot(dt, aes(x = Item, y = get(year), fill = Item)) + 
-    geom_bar(stat = 'identity') +
-    labs(title = 'Amount of products in ___ in ____', 
-         y = "Amount (1000 tonnes)", x = "Product") +
-    theme_minimal() +
-    theme(legend.position = "None") +
-    coord_flip()
-  return(g)
-}
-area_year_plot(import, '2018', 'China')
-
-area_line = function(DT, area){
-  dt = choose_area(DT, area)
-  g = ggplot(melt(dt), aes(x = variable, y = value, group = Item, color = Item)) + 
-    geom_line() +
-    geom_point()
-    labs(title = 'Amount of ____ in ___ over the years', 
-         y = "Amount (1000 tonnes)", x = "Year") +
-    theme_minimal() +
-    theme(legend.position = "None")
-  return(g)
-}
-area_line(import, 'China')
-
 
 
